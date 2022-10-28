@@ -1,5 +1,6 @@
 <?php
 
+require './Db/database.php';
 class Todo
 {
 
@@ -60,5 +61,20 @@ class Todo
         $this->status = $status;
 
         return $this;
+    }
+
+    public function inserirTodo()
+    {
+        $this->data = date('Y-m-d');
+        $this->status = "em processo";
+
+        $db = new Database('todo');
+        $this->id = $db->inserir([
+            'descricao' => $this->descricao,
+            'data' => $this->data,
+            'status' => $this->status
+        ]);
+
+        return $this->id;
     }
 }
