@@ -82,4 +82,7 @@ class Todo
         return (new Database("todo"))->selecionar($where, $order, $limit)
                                      ->fetchAll(PDO::FETCH_CLASS);                                      
     }
+    public static function deletarTodo($id){
+        return (new Database("todo"))->deletar($id);
+    }
 }

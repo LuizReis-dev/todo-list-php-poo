@@ -53,4 +53,11 @@ class Database
 
         return $this->executarQuery($query);
     }
+
+    public function deletar($id) {
+        $query = "DELETE FROM ". $this->table . " WHERE id =". $id;
+        $this->executarQuery($query);
+
+        return true;
+    }
 }
