@@ -1,9 +1,10 @@
 <?php
 
 require './Db/database.php';
+
 class Todo
 {
-
+    
     private $id;
     private $descricao;
     private $data;
@@ -76,5 +77,9 @@ class Todo
         ]);
 
         return $this->id;
+    }
+    public static function getTodos($where = null, $order = null, $limit = null){
+        return (new Database("todo"))->selecionar($where, $order, $limit)
+                                     ->fetchAll(PDO::FETCH_CLASS);                                      
     }
 }

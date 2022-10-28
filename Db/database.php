@@ -44,4 +44,13 @@ class Database
 
         return $this->connection->lastInsertId();
     }
+    public function selecionar($where, $order, $limit, $campos = "*") {
+        $where = strlen($where) ? 'WHERE ' . $where : ' ';
+        $order = strlen($order) ? 'ORDER BY ' . $order : ' ';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : ' ';
+
+        $query = "SELECT " . $campos . " FROM " . $this->table . " " . $where . " " . $order . " " . $limit ." "; 
+
+        return $this->executarQuery($query);
+    }
 }
